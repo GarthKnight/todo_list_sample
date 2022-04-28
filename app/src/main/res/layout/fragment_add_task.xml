@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewmodel"
+            type="com.example.sltodolist.presentation.add_task.AddTaskViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_title"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_horizontal_margin"
+            android:layout_marginTop="@dimen/small_vertical_margin"
+            android:layout_marginEnd="@dimen/common_horizontal_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewmodel.title}"
+                android:hint="@string/title_hint" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_description"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/big_text_input_height"
+            android:layout_marginStart="@dimen/common_horizontal_margin"
+            android:layout_marginTop="@dimen/small_vertical_margin"
+            android:layout_marginEnd="@dimen/common_horizontal_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@={viewmodel.description}"
+                android:gravity="top"
+                android:hint="@string/description_hint" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_priority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_horizontal_margin"
+            android:layout_marginTop="@dimen/common_vertical_margin"
+            android:text="@string/title_priority"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_description" />
+
+        <Spinner
+            android:id="@+id/spinner_priority"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_horizontal_margin"
+            android:layout_marginTop="@dimen/small_vertical_margin"
+            android:layout_marginEnd="@dimen/common_horizontal_margin"
+            android:background="@drawable/bg_spinner"
+            android:entries="@array/priorities"
+            android:padding="@dimen/small_vertical_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_priority" />
+
+        <TextView
+            android:id="@+id/tv_deadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_horizontal_margin"
+            android:layout_marginTop="@dimen/common_vertical_margin"
+            android:text="@string/title_deadline"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_priority" />
+
+        <TextView
+            android:id="@+id/tv_deadline_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_horizontal_margin"
+            android:layout_marginTop="@dimen/small_vertical_margin"
+            android:background="@drawable/bg_rounded_stroke"
+            android:padding="@dimen/small_vertical_margin"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_deadline"
+            tools:text="12.12.12" />
+
+        <Button
+            android:id="@+id/btn_create"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/common_horizontal_margin"
+            android:layout_marginBottom="@dimen/common_vertical_margin"
+            android:text="@string/btn_create"
+            android:onClick="@{() -> viewmodel.saveTask()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

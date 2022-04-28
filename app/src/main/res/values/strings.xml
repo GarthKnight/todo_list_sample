@@ -9,4 +9,32 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="title_hint">Title</string>
+    <string name="title_priority">Priority</string>
+    <string name="title_deadline">Deadline</string>
+
+    <string name="description_hint">Description</string>
+
+    <string name="btn_create">Create task</string>
+    <string name="btn_edit">Edit</string>
+    <string name="btn_delete">Delete</string>
+
+    <string name="menu_clear">Delete completed</string>
+    <string name="menu_filter">Filter</string>
+    <string name="menu_all">All</string>
+    <string name="menu_active">Active</string>
+    <string name="menu_completed">Completed</string>
+
+    <string name="label_task_list">Task List</string>
+    <string name="label_add_task">Add task</string>
+    <string name="label_task_detail">Task Detail</string>
+
+
+    <string-array name="priorities">
+        <item>Low priority</item>
+        <item>Medium priority</item>
+        <item>High priority</item>
+    </string-array>
+
 </resources>

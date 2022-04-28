@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="viewmodel"
+            type="com.example.sltodolist.presentation.task_detail.TaskDetailViewModel" />
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_horizontal_margin"
+            android:layout_marginTop="@dimen/common_vertical_margin"
+            android:background="@drawable/bg_rounded_stroke"
+            android:padding="@dimen/small_vertical_margin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="abcd" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_horizontal_margin"
+            android:layout_marginTop="@dimen/common_vertical_margin"
+            android:layout_marginEnd="@dimen/common_horizontal_margin"
+            android:background="@drawable/bg_rounded_stroke"
+            android:padding="@dimen/small_vertical_margin"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:text="abcd" />
+
+
+        <TextView
+            android:id="@+id/tv_priority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_horizontal_margin"
+            android:layout_marginTop="@dimen/common_vertical_margin"
+            android:background="@drawable/bg_rounded_stroke"
+            android:padding="@dimen/small_vertical_margin"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_description"
+            tools:text="low priority" />
+
+        <TextView
+            android:id="@+id/tv_deadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_horizontal_margin"
+            android:layout_marginTop="@dimen/common_vertical_margin"
+            android:background="@drawable/bg_rounded_stroke"
+            android:padding="@dimen/small_vertical_margin"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_priority"
+            tools:text="12.12.12" />
+
+        <Button
+            android:id="@+id/btn_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_horizontal_margin"
+            android:layout_marginEnd="@dimen/common_horizontal_margin"
+            android:layout_marginBottom="@dimen/small_vertical_margin"
+            android:onClick="@{() -> viewmodel.editTask()}"
+            android:text="@string/btn_edit"
+            app:layout_constraintBottom_toTopOf="@+id/btn_delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_horizontal_margin"
+            android:layout_marginEnd="@dimen/common_horizontal_margin"
+            android:layout_marginBottom="@dimen/common_vertical_margin"
+            android:background="@drawable/bg_red_button"
+            android:onClick="@{() -> viewmodel.deleteTask()}"
+            android:text="@string/btn_delete"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
