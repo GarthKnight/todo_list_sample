@@ -31,6 +31,7 @@ class ListViewModel @Inject constructor(
                 },
                 {
                     Timber.tag("TASKS_FETCH").d("fetch failed")
+                    commonErrorEvent.value = Event(Unit)
                 })
             .disposeOnCleared()
     }
@@ -49,6 +50,7 @@ class ListViewModel @Inject constructor(
                 },
                 {
                     Timber.tag("TASK_COMPLETE").d("fail")
+                    commonErrorEvent.value = Event(Unit)
                 }
             )
             .disposeOnCleared()
@@ -72,6 +74,7 @@ class ListViewModel @Inject constructor(
                 },
                 {
                     Timber.tag("TASKS_FETCH").d("fetch failed")
+                    commonErrorEvent.value = Event(Unit)
                 }
             )
             .disposeOnCleared()
@@ -86,6 +89,7 @@ class ListViewModel @Inject constructor(
                 },
                 {
                     Timber.tag("TASKS_FETCH").d("fetch failed")
+                    commonErrorEvent.value = Event(Unit)
                 })
             .disposeOnCleared()
     }

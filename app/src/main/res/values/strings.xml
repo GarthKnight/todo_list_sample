@@ -20,6 +20,8 @@
     <string name="btn_edit">Edit</string>
     <string name="btn_delete">Delete</string>
 
+    <string name="text_common_error">Something went wrong</string>
+
     <string name="menu_clear">Delete completed</string>
     <string name="menu_filter">Filter</string>
     <string name="menu_all">All</string>

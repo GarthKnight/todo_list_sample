@@ -44,7 +44,6 @@
             android:maxLines="1"
             android:text="@{task.title}"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            app:completedTask="@{task.completed}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cb_complete"
             app:layout_constraintTop_toTopOf="parent"

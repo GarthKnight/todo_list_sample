@@ -19,12 +19,11 @@ class TaskDetailFragment : Fragment() {
 
     private val args: TaskDetailFragmentArgs by navArgs()
 
-    private var binding: FragmentTaskDetailBinding? = null
-
     @Inject
     internal lateinit var viewModelProvider: Provider<TaskDetailViewModel>
 
     private lateinit var viewModel: TaskDetailViewModel
+    private lateinit var binding: FragmentTaskDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DI.app.provideComponent().inject(this)
@@ -36,11 +35,11 @@ class TaskDetailFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentTaskDetailBinding.inflate(inflater, container, false).apply {
             viewmodel = viewModel
         }
-        return binding?.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -51,10 +50,10 @@ class TaskDetailFragment : Fragment() {
         viewModel.getTask(args.taskId)
 
         viewModel.task.observe(viewLifecycleOwner) {
-            binding?.tvTitle?.text = it.title
-            binding?.tvDescription?.text = it.description
-            binding?.tvPriority?.text = resources.getStringArray(R.array.priorities)[it.priority]
-            binding?.tvDeadline?.text = it.getHumanReadableDeadline()
+            binding.tvTitle.text = it.title
+            binding.tvDescription.text = it.description
+            binding.tvPriority.text = resources.getStringArray(R.array.priorities)[it.priority]
+            binding.tvDeadline.text = it.getHumanReadableDeadline()
         }
     }
 
@@ -86,6 +85,6 @@ class TaskDetailFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding = null
+        binding.unbind()
     }
 }

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sltodolist.R
 import com.example.sltodolist.data.Task
 import com.example.sltodolist.databinding.ItemTaskBinding
+import java.util.*
 
 class TaskListAdapter(private val viewModel: ListViewModel) :
     ListAdapter<Task, TaskListAdapter.ViewHolder>(TaskDiffCallback()) {
@@ -26,12 +27,15 @@ class TaskListAdapter(private val viewModel: ListViewModel) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(viewModel: ListViewModel, item: Task) {
+            val context = binding.root.context
 
             binding.viewmodel = viewModel
             binding.task = item
 
-            with(binding.tvPriority) {
-                text = context.resources.getStringArray(R.array.priorities)[item.priority]
+            binding.tvPriority.text = context.resources.getStringArray(R.array.priorities)[item.priority]
+
+            if(item.deadline < Calendar.getInstance().timeInMillis){
+                    binding.root.setBackgroundColor(context.resources.getColor(R.color.red_transparent))
             }
             binding.executePendingBindings()
         }

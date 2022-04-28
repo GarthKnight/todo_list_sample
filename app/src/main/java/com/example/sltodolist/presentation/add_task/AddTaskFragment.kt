@@ -27,12 +27,12 @@ import javax.inject.Provider
 class AddTaskFragment : Fragment() {
 
     private val args: AddTaskFragmentArgs by navArgs()
-    private var binding: FragmentAddTaskBinding? = null
 
     @Inject
     internal lateinit var viewModelProvider: Provider<AddTaskViewModel>
 
     private lateinit var viewModel: AddTaskViewModel
+    private lateinit var binding: FragmentAddTaskBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DI.app.provideComponent().inject(this)
@@ -44,12 +44,12 @@ class AddTaskFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAddTaskBinding.inflate(inflater, container, false).apply {
             viewmodel = viewModel
         }
 
-        return binding?.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -74,10 +74,10 @@ class AddTaskFragment : Fragment() {
         val returnFormat = SimpleDateFormat("dd-MM-yy", Locale.getDefault())
         val date = returnFormat.format(args.deadline)
 
-        binding?.tvDeadlinePicker?.text = date
-        binding?.spinnerPriority?.setSelection(args.priority)
+        binding.tvDeadlinePicker.text = date
+        binding.spinnerPriority.setSelection(args.priority)
 
-        binding?.btnCreate?.text = if (args.taskId.isNullOrEmpty()) {
+        binding.btnCreate.text = if (args.taskId.isNullOrEmpty()) {
             getString(R.string.btn_create)
         } else {
             getString(R.string.btn_edit)
@@ -85,7 +85,7 @@ class AddTaskFragment : Fragment() {
     }
 
     private fun initSpinner() {
-        binding?.spinnerPriority?.onItemSelectedListener =
+        binding.spinnerPriority.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>?,
@@ -118,17 +118,17 @@ class AddTaskFragment : Fragment() {
             val returnFormat = SimpleDateFormat("dd-MM-yy", Locale.getDefault())
             val date = returnFormat.format(it)
 
-            binding?.tvDeadlinePicker?.text = date
+            binding.tvDeadlinePicker.text = date
             viewModel.deadline = it
         }
 
-        binding?.tvDeadlinePicker?.setOnClickListener {
+        binding.tvDeadlinePicker.setOnClickListener {
             datePicker.show(childFragmentManager, "date_picker")
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding = null
+        binding.unbind()
     }
 }
